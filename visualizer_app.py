@@ -55,15 +55,6 @@ def getinfo(t, yearlist, curyear):
         print('In %d, team won %d awards, award list: %s.' % (y, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
         #print('In %d, team match results are: %s.' % (y, ",".join(matches)))
         print()
-        
-def getAwards(t, year):
-    try:
-        awards = tba.team_awards(t, year)
-        st.header(len(awards))
-        st.header('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
-    except:
-        st.error('Error.')
-        st.stop()
 
 def getscoreinfo(t, y, events):
     d = {}
@@ -203,6 +194,6 @@ awards = tba.team_awards(int(tm), int(tmy))
 if len(awards) == 0:
     st.write('In %d, team won no awards.' % (tmy))
 elif len(awards) == 1:
-    st.write('In %d, team won %d award, award list: %s.' % (tmy, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
+    st.write('In %d, team won %d award, award list: %s.' % (tmy, len(awards), ", ".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
 else:
-    st.write('In %d, team won %d awards, award list: %s.' % (tmy, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
+    st.write('In %d, team won %d awards, award list: %s.' % (tmy, len(awards), ", ".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
