@@ -55,6 +55,10 @@ def getinfo(t, yearlist, curyear):
         print('In %d, team won %d awards, award list: %s.' % (y, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
         #print('In %d, team match results are: %s.' % (y, ",".join(matches)))
         print()
+        
+def getAwards(t, year):
+    awards = tba.team_awards(t, year)
+    st.write('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
 
 def getscoreinfo(t, y, events):
     d = {}
@@ -100,7 +104,7 @@ def getTeamData(team, year, events):
             maximum = np.max(scores)
             data.update({key:[q1, median, q3, minimum, maximum]})
         except:
-            st.error('No data. Try a different year or match.')
+            st.error('No data. Try a different year.')
             st.stop()
     return data
 
@@ -118,7 +122,6 @@ class SideBarSetup:
         with st.sidebar:
             tm = st.text_input("Team Number", "649", key = "teamname " + str(n), placeholder = "649")
         return tm
-                
 
     def tmyrIN(self, y):
         with st.sidebar:
@@ -186,3 +189,5 @@ boxplot = alt.Chart(df).mark_boxplot(extent="min-max", size = 50).encode(
     )
 # Display the boxplot
 st.altair_chart(boxplot, use_container_width=True)
+
+getAwards()
