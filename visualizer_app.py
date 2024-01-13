@@ -162,6 +162,7 @@ class SideBarSetup:
         tmy = sb2.tmyrIN()
         evnt = sb2.tmyrevIN()
     """
+st.header("Score Visualization")
 x = 1
 sblist = []
 for i in range(x):
@@ -196,4 +197,5 @@ boxplot = alt.Chart(df).mark_boxplot(extent="min-max", size = 50).encode(
 st.altair_chart(boxplot, use_container_width=True)
 
 st.header("Awards & Stats")
+st.header(tmy)
 getAwards(tm, tmy)
