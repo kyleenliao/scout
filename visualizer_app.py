@@ -57,7 +57,8 @@ def getinfo(t, yearlist, curyear):
         print()
         
 def getAwards(t, year):
-    awards = tba.team_awards(t, year)
+    st.write(int(t[3:]))
+    awards = tba.team_awards(int(t[3:]), year)
     st.write('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
 
 def getscoreinfo(t, y, events):
