@@ -92,13 +92,16 @@ def getTeamData(team, year, events):
     evscr = getscoreinfo(team, year, events)
     data = {}
     for key, scores in evscr.items():
-        st.write(scores)
-        q1 = np.percentile(scores, 25)
-        median = np.percentile(scores, 50)
-        q3 = np.percentile(scores, 75)
-        minimum = np.min(scores)
-        maximum = np.max(scores)
-        data.update({key:[q1, median, q3, minimum, maximum]})
+        try:
+            q1 = np.percentile(scores, 25)
+            median = np.percentile(scores, 50)
+            q3 = np.percentile(scores, 75)
+            minimum = np.min(scores)
+            maximum = np.max(scores)
+            data.update({key:[q1, median, q3, minimum, maximum]})
+        except:
+            st.error('No data. Try a different year or match.')
+            st.stop()
     return data
 
 def checkTeamValidity(team):
