@@ -57,10 +57,10 @@ def getinfo(t, yearlist, curyear):
         print()
         
 def getAwards(t, year):
-    st.header(year)
     try:
         awards = tba.team_awards(t, int(year))
-        st.write('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
+        st.header(awards)
+        st.header('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
     except:
         st.error('Error.')
         st.stop()
@@ -197,5 +197,4 @@ boxplot = alt.Chart(df).mark_boxplot(extent="min-max", size = 50).encode(
 st.altair_chart(boxplot, use_container_width=True)
 
 st.header("Awards & Stats")
-st.header(tmy)
 getAwards(tm, tmy)
