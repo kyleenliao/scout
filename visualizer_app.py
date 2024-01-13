@@ -41,8 +41,6 @@ st.markdown(
 #Blue Alliance API Parsing
 tba = tbapy.TBA('kDUcdEfvMKYdouPPg0d9HudlOZ19GLwBBOH3CZuXMjMf7XITviY1eJrSs1jkrOYX')
 
-def getfullteams(
-
 def getinfo(t, yearlist, curyear):
     team = tba.team(t)
     years = tba.team_years(t)
@@ -102,15 +100,25 @@ def getTeamData(team, year, events):
         data.update({key:[q1, median, q3, minimum, maximum]})
     return data
 
+def checkTeamValidity(team):
+    allteams = np.load("teamnumbers.npy")
+    if team in allteams:
+        return True
+    return False
+
 #Input
 st.sidebar.title("Select Team")
 
 class SideBarSetup:
     def tmnumIN(self, n):
         with st.sidebar:
-            tm = st.text_input("Team Number", "649", key = "teamname " + str(n), placeholder = "649")
-            if tm
-        return tm
+            try:
+                tm = st.text_input("Team Number", "649", key = "teamname " + str(n), placeholder = "649")
+                return tm
+            except:
+                st.error('This team name is invalid.')
+                st.stop()
+                
 
     def tmyrIN(self, y):
         with st.sidebar:
