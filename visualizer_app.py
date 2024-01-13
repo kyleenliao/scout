@@ -59,7 +59,7 @@ def getinfo(t, yearlist, curyear):
 def getAwards(t, year):
     try:
         awards = tba.team_awards(t, int(year))
-        st.header(awards)
+        st.header(len(awards))
         st.header('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
     except:
         st.error('Error.')
