@@ -6,7 +6,7 @@ import tbapy
 import datetime
 
 st.set_page_config(
-    page_title="MSET Scouting Data Visualizer",
+    page_title="FRC Teams - Data & Stats",
     page_icon=":chart:",  # You can use any emoji as an icon
     layout="centered",
     initial_sidebar_state="collapsed",
