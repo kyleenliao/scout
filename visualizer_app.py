@@ -197,6 +197,8 @@ boxplot = alt.Chart(df).mark_boxplot(extent="min-max", size = 50).encode(
 st.altair_chart(boxplot, use_container_width=True)
 
 st.header("Awards & Stats")
+st.header(tm)
+st.header(tmy)
 awards = tba.team_awards(tm, tmy)
 st.header(len(awards))
 st.header('In %d, team won %d awards, award list: %s.' % (tmy, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
