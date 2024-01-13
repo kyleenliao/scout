@@ -58,7 +58,7 @@ def getinfo(t, yearlist, curyear):
         
 def getAwards(t, year):
     try:
-        awards = tba.team_awards(t, int(year))
+        awards = tba.team_awards(t, year)
         st.header(len(awards))
         st.header('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
     except:
@@ -197,4 +197,6 @@ boxplot = alt.Chart(df).mark_boxplot(extent="min-max", size = 50).encode(
 st.altair_chart(boxplot, use_container_width=True)
 
 st.header("Awards & Stats")
-getAwards(tm, tmy)
+awards = tba.team_awards(tm, tmy)
+st.header(len(awards))
+st.header('In %d, team won %d awards, award list: %s.' % (tmy, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
