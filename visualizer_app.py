@@ -57,9 +57,14 @@ def getinfo(t, yearlist, curyear):
         print()
         
 def getAwards(t, year):
-    st.write(int(t[3:]))
-    awards = tba.team_awards(int(t[3:]), year)
-    st.write('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
+    st.write(t)
+    try:
+        st.write(int(t[3:]))
+        awards = tba.team_awards(int(t[3:]), year)
+        st.write('In %d, team won %d awards, award list: %s.' % (year, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
+    except:
+        st.error('Error.')
+        st.stop()
 
 def getscoreinfo(t, y, events):
     d = {}
@@ -191,5 +196,6 @@ boxplot = alt.Chart(df).mark_boxplot(extent="min-max", size = 50).encode(
 # Display the boxplot
 st.altair_chart(boxplot, use_container_width=True)
 
-st.header("Awards")
+st.header("Awards & Stats")
+st.write(tm)
 getAwards(tm, tmy)
