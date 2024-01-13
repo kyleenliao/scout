@@ -113,11 +113,11 @@ class SideBarSetup:
     def tmnumIN(self, n):
         with st.sidebar:
             try:
-                tm = st.text_input("Team Number", "649", key = "teamname " + str(n), placeholder = "649")
-                return tm
+                tm = st.text_input("Team Number", "649", key = "teamname " + str(n))
             except:
                 st.error('This team name is invalid.')
                 st.stop()
+            return tm
                 
 
     def tmyrIN(self, y):
