@@ -190,4 +190,4 @@ boxplot = alt.Chart(df).mark_boxplot(extent="min-max", size = 50).encode(
 # Display the boxplot
 st.altair_chart(boxplot, use_container_width=True)
 
-getAwards()
+st.header("Awards")
