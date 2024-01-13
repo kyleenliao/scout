@@ -200,4 +200,4 @@ tba = tbapy.TBA('kDUcdEfvMKYdouPPg0d9HudlOZ19GLwBBOH3CZuXMjMf7XITviY1eJrSs1jkrOY
 
 st.header("Awards & Stats")
 awards = tba.team_awards(int(tm), int(tmy))
-st.header('In %d, team won %d awards, award list: %s.' % (tmy, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
+st.write('In %d, team won %d awards, award list: %s.' % (tmy, len(awards), ",".join('%s (%s)' % (award.name, award.event_key) for award in awards)))
