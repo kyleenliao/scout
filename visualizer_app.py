@@ -7,10 +7,15 @@ import datetime
 
 st.set_page_config(
     page_title="FRC Teams - Data & Stats",
-    page_icon=":chart:",  # You can use any emoji as an icon
+    page_icon=":chart:",  # You can use any emoji as an ico
     layout="centered",
     initial_sidebar_state="expanded",
 )
+
+PAGES = [
+    'Awards',
+    'Plots',
+]
 
 st.title("MSET Scouting Data Visualizer")
 
@@ -104,14 +109,15 @@ def getTeamData(team, year, events):
             st.stop()
     return data
 
-def checkTeamValidity(team):
-    allteams = np.load("teamnumbers.npy")
-    if team in allteams:
-        return True
-    return False
-
 #Input
 st.sidebar.title("Select Team")
+if st.session_state.page:
+        page=st.sidebar.radio('Navigation', PAGES, index=st.session_state.page)
+else:
+    page=st.sidebar.radio('Navigation', PAGES, index=1)
+    
+st.experimental_set_query_params(page=page)
+
 
 class SideBarSetup:
     def tmnumIN(self, n):
