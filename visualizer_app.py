@@ -12,11 +12,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-PAGES = [
-    'Awards',
-    'Plots',
-]
-
 st.title("MSET Scouting Data Visualizer")
 
 # Set theme
@@ -157,15 +152,6 @@ class SideBarSetup:
         tmy = sb2.tmyrIN()
         evnt = sb2.tmyrevIN()
     """
-    
-st.sidebar.title("Select Team")
-if st.session_state.page:
-        page=st.sidebar.radio('Navigation', PAGES, index=st.session_state.page)
-else:
-    page=st.sidebar.radio('Navigation', PAGES, index=1)
-    
-st.experimental_set_query_params(page=page)
-
 
 st.header("Score Visualization")
 x = 1
