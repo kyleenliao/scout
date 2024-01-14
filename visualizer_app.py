@@ -9,7 +9,7 @@ st.set_page_config(
     page_title="FRC Teams - Data & Stats",
     page_icon=":chart:",  # You can use any emoji as an icon
     layout="centered",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 st.title("MSET Scouting Data Visualizer")
@@ -118,6 +118,11 @@ class SideBarSetup:
         with st.sidebar:
             tm = st.text_input("Team Number", "649", key = "teamname " + str(n), placeholder = "649")
         return tm
+    
+    def tmnumIN2(self, n):
+        with st.sidebar:
+            tm2 = st.text_input("Team Number", "254", key = "teamname " + str(n), placeholder = "254")
+        return tm2
 
     def tmyrIN(self, y):
         with st.sidebar:
